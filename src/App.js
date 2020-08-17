@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Recipe from './components/Recipe'
+import Header from './components/layout/Header'
+import SearchBar from './components/SearchBar'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    state = {
+      ingredients: [],
+      recipes: []
+    }
+
+    addIngredients = ingredient => {
+        this.setState({ingredients: [...this.state.ingredients, ingredient]});
+        console.log(this.state.ingredients);
+    }
+
+    
+
+
+    render() {
+        return (
+            <div className="App">
+              <Header/>
+              <SearchBar ingredients= {this.addIngredients} />
+              <Recipe />
+            </div>
+        )
+    }
 }
 
 export default App;
