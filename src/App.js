@@ -3,6 +3,7 @@ import Recipe from './components/Recipe'
 import Header from './components/layout/Header'
 import SearchBar from './components/SearchBar'
 import Axios from 'axios';
+import IngredientList from './components/IngredientList'
 
 class App extends React.Component {
 
@@ -16,11 +17,11 @@ class App extends React.Component {
         console.log(this.state.ingredients);
     }
 
-    searchRecipe = event => {
-        event.preventDefault();
+    searchRecipe = () => {
+        
         const ingredients = this.state.ingredients;
         const url_ingredients = ingredients.map((index) => `${index}`).join(',');
-
+        console.log(url_ingredients);
         Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=40fc2345992540f0be8fd7b73b307777`)
           .then(res => this.setState({recipes: res.data}))
     }
@@ -33,9 +34,7 @@ class App extends React.Component {
             <div className="App">
               <Header/>
               <SearchBar ingredients= {this.addIngredients} />
-              <form onSubmit={this.searchRecipe}>
-                  <input type="submit" value="Search Recipe"/>
-              </form>
+              <IngredientList list = {this.state.ingredients} searchRecipe = {this.searchRecipe} />
               <Recipe />
             </div>
         )
