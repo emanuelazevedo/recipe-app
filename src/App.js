@@ -18,13 +18,11 @@ class App extends React.Component {
 
     searchRecipe = event => {
         event.preventDefault();
-        
-        const ingredients = {
-          ingredients: this.state.ingredients
-        }
-        console.log(ingredients);
-        Axios.post(`https://api.spoonacular.com/recipes/findByIngredients/information?ingredients=apples,+flour,+sugar&number=2&apiKey=40fc2345992540f0be8fd7b73b307777`)
-          .then(res => console.log(res))
+        const ingredients = this.state.ingredients;
+        const url_ingredients = ingredients.map((index) => `${index}`).join(',');
+
+        Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=40fc2345992540f0be8fd7b73b307777`)
+          .then(res => this.setState({recipes: res.data}))
     }
 
 
@@ -36,8 +34,8 @@ class App extends React.Component {
               <Header/>
               <SearchBar ingredients= {this.addIngredients} />
               <form onSubmit={this.searchRecipe}>
-                    <input type="submit" value="Search Recipe"/>
-                </form>
+                  <input type="submit" value="Search Recipe"/>
+              </form>
               <Recipe />
             </div>
         )
