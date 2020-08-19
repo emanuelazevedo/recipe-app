@@ -34,11 +34,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="App container-fuild">
               <Header/>
               <SearchBar ingredients= {this.addIngredients} />
               <IngredientList list = {this.state.ingredients} searchRecipe = {this.searchRecipe} />
-              <RecipesList recipes = {this.state.recipes} />
+              <RecipesList className="row" recipes = {this.state.recipes} />
             </div>
         )
     }

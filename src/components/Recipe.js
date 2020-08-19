@@ -7,12 +7,25 @@ export class Recipe extends Component {
         console.log(this.props.recipe);
 
         return (
-            <div>
-                <div>{title}</div>
-                <div><img src={image} alt={title} /></div>
+            <div className="col-md-3" style={card}>
+                <h4>{title}</h4>
+                <div><img style={imageStyle} src={image} alt={title} /></div>
             </div>
         )
     }
+}
+
+const card = {
+    borderRadius: '10px',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+}
+
+const imageStyle = {
+    width: '220px',
+    height: '190px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
 }
 
 export default Recipe
