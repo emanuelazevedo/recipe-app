@@ -1,5 +1,5 @@
 import React from 'react';
-import Recipe from './components/Recipe'
+import Recipes from './components/Recipes'
 import Header from './components/layout/Header'
 import SearchBar from './components/SearchBar'
 import Axios from 'axios';
@@ -35,7 +35,7 @@ class App extends React.Component {
               <Header/>
               <SearchBar ingredients= {this.addIngredients} />
               <IngredientList list = {this.state.ingredients} searchRecipe = {this.searchRecipe} />
-              <Recipe />
+              <Recipes />
             </div>
         )
     }

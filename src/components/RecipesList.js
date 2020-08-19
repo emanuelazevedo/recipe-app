@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Recipe extends Component {
+export class RecipesList extends Component {
 
     
 
@@ -13,4 +13,4 @@ export class Recipe extends Component {
     }
 }
 
-export default Recipe
+export default RecipesList
