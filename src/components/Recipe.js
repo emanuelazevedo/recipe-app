@@ -28,4 +28,5 @@ const imageStyle = {
     marginRight: 'auto'
 }
 
+
 export default Recipe
