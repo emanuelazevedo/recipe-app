@@ -19,21 +19,35 @@ class App extends React.Component {
 
     searchRecipe = () => {
         
-        const ingredients = this.state.ingredients;
-        const url_ingredients = ingredients.map((index) => `${index}`).join(',');
+        let ingredients = this.state.ingredients;
+        let url_ingredients = ingredients.map((index) => `${index}`).join(',');
         console.log(url_ingredients);
         Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=40fc2345992540f0be8fd7b73b307777`)
           .then(res => {
-            console.log(res.data);
-            this.setState({recipes: res.data})
+            // console.log(res.data);
+            // this.setState({recipes: res.data})
+            let recipes = res.data;
+            this.getRecipeUrl(recipes);
           })
     }
 
-    // Axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=false&apiKey=40fc2345992540f0be8fd7b73b307777`)
-    //       .then(res => {
-    //         console.log('recipe',res.data);
-            
-    //       })
+    getRecipeUrl = recipes => {
+
+        for(let recipe of recipes) {
+            Axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=false&apiKey=40fc2345992540f0be8fd7b73b307777`)
+              .then(res => {
+                console.log('ulr',res.data.sourceUrl);
+                console.log('recipe', recipe);
+                const data = {
+                  title:recipe.title,
+                  image:recipe.image,
+                  sourceUrl:res.data.sourceUrl,
+                };
+                this.setState({recipes: this.state.recipes.concat(data)})
+              })
+        }
+    }
+    
 
 
 

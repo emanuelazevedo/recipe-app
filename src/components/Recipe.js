@@ -4,7 +4,7 @@ export class Recipe extends Component {
     
     render() {
         const {title, image, sourceUrl} = this.props.recipe;
-        console.log(this.props.recipe);
+        // console.log(this.props.recipe);
 
         return (
             <div className="col-md-3" style={card}>
