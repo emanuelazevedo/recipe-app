@@ -3,13 +3,15 @@ import React, { Component } from 'react'
 export class Recipe extends Component {
     
     render() {
-        const {title, image} = this.props.recipe;
+        const {title, image, sourceUrl} = this.props.recipe;
         console.log(this.props.recipe);
 
         return (
             <div className="col-md-3" style={card}>
-                <h4>{title}</h4>
-                <div><img style={imageStyle} src={image} alt={title} /></div>
+                <a href={sourceUrl}>
+                    <h4>{title}</h4>
+                    <div><img style={imageStyle} src={image} alt={title} /></div>
+                </a>
             </div>
         )
     }

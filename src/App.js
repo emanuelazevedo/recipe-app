@@ -29,6 +29,12 @@ class App extends React.Component {
           })
     }
 
+    // Axios.get(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=false&apiKey=40fc2345992540f0be8fd7b73b307777`)
+    //       .then(res => {
+    //         console.log('recipe',res.data);
+            
+    //       })
+
 
 
 
