@@ -1,21 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Recipe extends Component {
+// export class Recipe extends Component {
     
-    render() {
-        const {title, image, sourceUrl} = this.props.recipe;
-        // console.log(this.props.recipe);
+//     render() {
+//         const {title, image, sourceUrl} = this.props.recipe;
+//         // console.log(this.props.recipe);
 
-        return (
-            <div className="col-md-3" style={card}>
-                <a href={sourceUrl}>
-                    <h4>{title}</h4>
-                    <div><img style={imageStyle} src={image} alt={title} /></div>
-                </a>
-            </div>
-        )
-    }
-}
+//         return (
+//             <div className="col-md-3" style={card}>
+//                 <a href={sourceUrl}>
+//                     <h4>{title}</h4>
+//                     <div><img style={imageStyle} src={image} alt={title} /></div>
+//                 </a>
+//             </div>
+//         )
+//     }
+// }
 
 const card = {
     borderRadius: '10px',
@@ -31,4 +31,14 @@ const imageStyle = {
 }
 
 
-export default Recipe
+export default function Recipe(props) {
+    const {title, image, sourceUrl} = props.recipe;
+    return (
+        <div className="col-md-3" style={card}>
+            <a href={sourceUrl}>
+                <h4>{title}</h4>
+                <div><img style={imageStyle} src={image} alt={title} /></div>
+            </a>
+        </div>
+    )
+}
