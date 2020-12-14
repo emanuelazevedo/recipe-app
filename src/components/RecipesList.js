@@ -26,7 +26,7 @@ export default function RecipesList(props) {
     );
 
     return (
-        <div>
+        <div className="row">
             {recipes}
         </div>
     )

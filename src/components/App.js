@@ -27,11 +27,15 @@ export default function App() {
 
   
   return (
-    <div className="App container-fuild">
+    <div>
       <Header/>
-      <SearchBar ingredients= {addIngredients} />
-      <IngredientList list = {ingredients} searchRecipe = {searchRecipe} />
-      <RecipesList className="row" recipes = {recipes} />
+      <div className="container">
+        
+        <SearchBar ingredients= {addIngredients} />
+        <IngredientList list = {ingredients} searchRecipe = {searchRecipe} />
+        
+        <RecipesList recipes = {recipes} />
+      </div>
     </div>
   )
   

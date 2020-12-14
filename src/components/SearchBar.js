@@ -40,20 +40,28 @@ export default function SearchBar(props) {
 
     function onSubmit(e) {
         e.preventDefault();
+        if(ingredients !== '') {
         props.ingredients(ingredients);
         setIngredients([]);
+        }
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit} style={{display: 'flex'}}>
-                <input type="text" 
-                    name="ingredients" 
-                    placeholder="Add ingredients" 
-                    style={{flex: '10', padding: '5px'}} 
-                    value={ingredients} onChange={onChange} />
-                    <input type="submit" value="Add Ingredient" className="btn" style={{flex: '1'}} />
+        <div className="row">
+            <form className="row justify-content-center" onSubmit={onSubmit} >
+                    <input type="text" 
+                        name="ingredients" 
+                        placeholder="Add ingredients" 
+                        className="col-md-6 col-md-offset-2"
+                        value={ingredients} onChange={onChange} 
+                    />
+                    <input type="submit" value="Add Ingredient" className="btn btn-primary col-md-2" style={marginInput} />
+                
             </form>            
         </div>
     )
+}
+
+const marginInput = {
+    marginLeft: '0.5rem'
 }
