@@ -25,7 +25,7 @@ import React from 'react'
 export default function IngredientList(props) {
     console.log(props.list);
     const list = props.list.map(ingredient => 
-        <li className="list-group-item list-group-item-success">
+        <li style={listElement} className="list-group-item list-group-item-success">
             {ingredient}
                 <button style={listButton} className="btn btn-danger">X</button>
         </li>
@@ -51,6 +51,11 @@ const listStyle = {
 
 const listButton = {
     position: 'absolute',
-    right: '5px',
-    top: '1px'
+    right: '10px',
+    top: '3px'
+}
+
+const listElement = {
+    paddingTop: '10px',
+    paddingBottom: '10px',
 }
