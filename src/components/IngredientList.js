@@ -26,8 +26,8 @@ export default function IngredientList(props) {
     console.log(props.list);
     const list = props.list.map(ingredient => 
         <li className="list-group-item list-group-item-success">
-            <span className="">{ingredient}</span>
-            <span className=""><button className="btn btn-danger">X</button></span>
+            {ingredient}
+                <button style={listButton} className="btn btn-danger">X</button>
         </li>
     );
 
@@ -47,4 +47,10 @@ export default function IngredientList(props) {
 
 const listStyle = {
     listStyleType: "none",
+}
+
+const listButton = {
+    position: 'absolute',
+    right: '5px',
+    top: '1px'
 }
