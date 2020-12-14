@@ -21,7 +21,9 @@ const card = {
     borderRadius: '10px',
     borderStyle: 'solid',
     borderWidth: '1px',
-    width: '30%'
+    width: '30%',
+    backgroundColor: '#e8e8e8',
+    borderColor: '#e8e8e8'
 }
 
 const imageStyle = {
