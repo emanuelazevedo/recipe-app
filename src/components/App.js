@@ -5,16 +5,19 @@ import SearchBar from './SearchBar'
 import Axios from 'axios';
 import IngredientList from './IngredientList'
 
+let ingredientId = 0;
 
 export default function App() {
   const [ingredients, setIngredients] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
   function addIngredients(ingredient) {
-    setIngredients([...ingredients, ingredient]);
+    ingredientId++;
+    setIngredients(ingredients => [...ingredients, {ingredient, ingredientId}]);
   }
 
   function searchRecipe() {
+    console.log('ingredients', ingredients);
     let url_ingredients = ingredients.map((index) => `${index}`).join(',');
     console.log(url_ingredients);
     Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=40fc2345992540f0be8fd7b73b307777`)
@@ -25,6 +28,11 @@ export default function App() {
       })
   }
 
+  function removeIngredient(index) {
+    let ingredientClone = [...ingredients];
+    ingredientClone.splice(index, 1);
+    setIngredients(ingredientClone);
+  }
   
   return (
     <div>
@@ -32,7 +40,7 @@ export default function App() {
       <div className="container">
         
         <SearchBar ingredients= {addIngredients} />
-        <IngredientList list = {ingredients} searchRecipe = {searchRecipe} />
+        <IngredientList list = {ingredients} removeIngredient = {removeIngredient} searchRecipe = {searchRecipe} />
         
         <RecipesList recipes = {recipes} />
       </div>

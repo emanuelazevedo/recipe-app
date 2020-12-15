@@ -25,9 +25,9 @@ import React from 'react'
 export default function IngredientList(props) {
     console.log(props.list);
     const list = props.list.map(ingredient => 
-        <li style={listElement} className="list-group-item list-group-item-success">
-            {ingredient}
-                <button style={listButton} className="btn btn-danger">X</button>
+        <li style={listElement} key={ingredient.ingredientId} className="list-group-item list-group-item-success">
+            {ingredient.ingredient}
+                <button style={listButton} onClick={props.removeIngredient.bind(ingredient.ingredientId)} className="btn btn-danger">X</button>
         </li>
     );
 
@@ -38,9 +38,11 @@ export default function IngredientList(props) {
                         {list}
                 </ul>
             </div>
+            {props.list.length > 0 && (
             <span className="row">
                 <button onClick={props.searchRecipe} className="btn btn-success col-md-2 mt-2" >Search Recipe</button>
             </span>
+            )}
         </div>
     )
 }
