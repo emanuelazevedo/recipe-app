@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import RecipesList from './RecipesList'
 import Header from './layout/Header'
 import SearchBar from './SearchBar'
@@ -18,11 +18,11 @@ export default function App() {
 
   function searchRecipe() {
     console.log('ingredients', ingredients);
-    let url_ingredients = ingredients.map((index) => `${index}`).join(',');
+    let url_ingredients = ingredients.map((index) => `${index.ingredient}`).join(',');
     console.log(url_ingredients);
-    Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=40fc2345992540f0be8fd7b73b307777`)
+    Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=0223a4514ad04e749eb86a5d4adf474a `)
       .then(res => {
-        console.log(res.data);
+        console.log('recipes set', res.data);
         
         setRecipes(res.data)
       })
