@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
-
+import React from 'react';
 
 // export class Recipe extends Component {
     
@@ -37,25 +35,23 @@ const imageStyle = {
 
 export default function Recipe(props) {
     const {title, image, id} = props.recipe;
-    const [sourceUrl, setSourceUrl] = useState('');
 
-    useEffect(() => {
+    // const [sourceUrl, setSourceUrl] = useState('');
+    // useEffect(() => {
         
-        Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=0223a4514ad04e749eb86a5d4adf474a`)
-            .then(res => {
-                console.log('hello', res.data);
-                setSourceUrl(res.data.sourceUrl);
-            })
+    //     Axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=0223a4514ad04e749eb86a5d4adf474a`)
+    //         .then(res => {
+    //             console.log('hello', res.data);
+    //             setSourceUrl(res.data.sourceUrl);
+    //         })
         
-    }, [])
+    // }, [])
 
     // `https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=false&apiKey=0223a4514ad04e749eb86a5d4adf474a `
     return (
-        <div className="col-md-4 m-3" style={card}>
-            <a href={sourceUrl}>
-                <h4>{title}</h4>
-                <div><img style={imageStyle} src={image} alt={title} /></div>
-            </a>
+        <div className="col-md-4 m-3" style={card} onClick={ () => props.getRecipe(id)}>
+            <h4>{title}</h4>
+            <div><img style={imageStyle} src={image} alt={title} /></div>
         </div>
     )
 }

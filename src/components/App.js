@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RecipesList from './RecipesList'
+import RecipeInfo from './RecipeInfo'
 import Header from './layout/Header'
 import SearchBar from './SearchBar'
 import Axios from 'axios';
@@ -11,13 +12,15 @@ export default function App() {
   const [ingredients, setIngredients] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
+  const [recipeData, setRecipeData] = useState({});
+  const [recipePage, setRecipePage] = useState(false);
+
   function addIngredients(ingredient) {
     ingredientId++;
     setIngredients(ingredients => [...ingredients, {ingredient, ingredientId}]);
   }
 
   function searchRecipe() {
-    console.log('ingredients', ingredients);
     let url_ingredients = ingredients.map((index) => `${index.ingredient}`).join(',');
     console.log(url_ingredients);
     Axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${url_ingredients}&apiKey=0223a4514ad04e749eb86a5d4adf474a `)
@@ -25,6 +28,7 @@ export default function App() {
         console.log('recipes set', res.data);
         
         setRecipes(res.data)
+        setRecipePage(false);
       })
   }
 
@@ -32,6 +36,14 @@ export default function App() {
     let ingredientClone = [...ingredients];
     ingredientClone.splice(index, 1);
     setIngredients(ingredientClone);
+  }
+
+  function getRecipe(recipeId) {
+    Axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=0223a4514ad04e749eb86a5d4adf474a`)
+      .then(res => {
+        setRecipeData(res.data);
+        setRecipePage(true);
+      })
   }
   
   return (
@@ -42,7 +54,12 @@ export default function App() {
         <SearchBar ingredients= {addIngredients} />
         <IngredientList list = {ingredients} removeIngredient = {removeIngredient} searchRecipe = {searchRecipe} />
         
-        <RecipesList recipes = {recipes} />
+        {
+          !recipePage && 
+          (<RecipesList recipes = {recipes} getRecipe = {getRecipe} />)
+        }
+        
+        {recipePage && (<RecipeInfo recipe = {recipeData} />)}
       </div>
     </div>
   )

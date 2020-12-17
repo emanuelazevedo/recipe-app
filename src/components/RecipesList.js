@@ -21,8 +21,10 @@ import Recipe from './Recipe'
 
 export default function RecipesList(props) {
 
+    
+
     const recipes = props.recipes.map(recipe => 
-        <Recipe key={recipe.id} recipe={recipe} />
+        <Recipe key={recipe.id} recipe={recipe} getRecipe = { props.getRecipe } />
     );
 
     return (
