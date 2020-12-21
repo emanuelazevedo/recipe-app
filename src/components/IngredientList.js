@@ -27,7 +27,7 @@ export default function IngredientList(props) {
     const list = props.list.map(ingredient => 
         <li style={listElement} key={ingredient.ingredientId} className="list-group-item list-group-item-success">
             {ingredient.ingredient}
-                <button style={listButton} onClick={props.removeIngredient.bind(ingredient.ingredientId)} className="btn btn-danger">X</button>
+                <button style={listButton} onClick={() => props.removeIngredient(ingredient.ingredientId)} className="btn btn-danger">X</button>
         </li>
     );
 
