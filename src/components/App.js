@@ -33,10 +33,12 @@ export default function App() {
   }
 
   function removeIngredient(index) {
-    console.log('i', index);
-    setIngredients(ingredients => ingredients.splice(index, 1));
-    console.log('ing', ingredients);
-    
+    // let ingredientClone = [...ingredients];
+    // ingredientClone.splice(index, 1);
+    // console.log('i', index);
+    // console.log('in', ingredientClone);
+    // setIngredients(ingredientClone);
+    setIngredients(ingredients.filter(ingredient => ingredient.ingredientId !== index));
   }
 
   function getRecipe(recipeId) {
