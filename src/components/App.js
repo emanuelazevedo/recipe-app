@@ -33,11 +33,6 @@ export default function App() {
   }
 
   function removeIngredient(index) {
-    // let ingredientClone = [...ingredients];
-    // ingredientClone.splice(index, 1);
-    // console.log('i', index);
-    // console.log('in', ingredientClone);
-    // setIngredients(ingredientClone);
     setIngredients(ingredients.filter(ingredient => ingredient.ingredientId !== index));
   }
 
@@ -50,7 +45,7 @@ export default function App() {
   }
   
   return (
-    <div>
+    <div classsName="">
       <Header/>
       <div className="container">
         
