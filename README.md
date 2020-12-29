@@ -1,5 +1,7 @@
 # Recipe App
-## You can check the app in http://emanuelazevedo.github.io/recipe-app/ 
+
+## You can search for recipes by listing the desire ingredients you want to use
+### You can check the app in http://emanuelazevedo.github.io/recipe-app/ 
 
 Made with React using Spoonacular API
 
